@@ -1,0 +1,69 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!--<item name="colorPrimary">@color/primary</item>-->
+        <!--<item name="colorPrimaryDark">@color/primary_dark</item>-->
+        <!--<item name="colorAccent">@color/accent</item>-->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="LightTheme" parent="AppTheme.NoActionBar">
+        <!--自定义字体颜色-->
+        <item name="textColorPrimary">@color/Grey600</item>
+        <!--自定义item背景颜色-->
+        <item name="itemViewBackground">@color/viewBackground</item>
+        <!--自定义背景颜色-->
+        <item name="rootViewBackground">@color/Grey50</item>
+        <item name="alertDialogTheme">@style/Dialog.Alert.Light</item>
+        <item name="android:windowBackground">@color/Grey50</item>
+    </style>
+
+    <style name="DarkTheme" parent="AppTheme.NoActionBar">
+        <!--自定义字体颜色-->
+        <item name="textColorPrimary">@color/Grey400</item>
+        <!--自定义item背景颜色-->
+        <item name="itemViewBackground">@color/Grey800</item>
+        <!--自定义背景颜色-->
+        <item name="rootViewBackground">@color/Grey900</item>
+        <item name="alertDialogTheme">@style/Dialog.Alert.Dark</item>
+        <item name="android:windowBackground">@color/Grey900</item>
+    </style>
+
+    <style name="Dialog.Alert.Light" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <!--修改AlertDialog颜色-->
+        <item name="android:background">@color/Grey50</item>
+        <item name="android:textColor">@color/Grey600</item>
+        <item name="android:textColorPrimary">@color/Grey600</item>
+    </style>
+
+    <style name="Dialog.Alert.Dark" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <!--修改AlertDialog颜色-->
+        <item name="android:background">@color/Grey900</item>
+        <item name="android:textColor">@color/Grey400</item>
+        <item name="android:textColorPrimary">@color/Grey400</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <!--自定义CollapsingToolbarLayout字体大小 custom the title's text size of CollapsingToolBarLayout-->
+    <style name="ExpandedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>

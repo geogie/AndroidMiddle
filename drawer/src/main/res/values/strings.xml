@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Drawer</string>
+
+    <!--Navigation Item-->
+    <string name="nav_product">产品·创业·互联网</string>
+    <string name="nav_life">生活·旅行·杂谈</string>
+    <string name="nav_music">音乐·影视·摄影</string>
+    <string name="nav_emotion">健康·情感·心理</string>
+    <string name="nav_profession">专业领域</string>
+    <string name="nav_zhihu">知乎·程序员</string>
+    <string name="nav_other">其它</string>
+    <string name="nav_user_define">自定义</string>
+    <string name="nav_color_chooser">切换主题颜色</string>
+    <string name="nav_activity_about">关于</string>
+
+    <!--PostsListView-->
+    <string name="nav_night_mode">夜间模式</string>
+
+    <!--Main Activity-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="double_click_exit">再按一次退出程序</string>
+</resources>
