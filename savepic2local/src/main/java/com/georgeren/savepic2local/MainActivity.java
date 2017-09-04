@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageUtils.getInstance().saveImage2(MainActivity.this, picUrl,"myTest.jpg");
+                ImageUtils.getInstance().saveImage(picUrl,"myTest2.jpg");// 通过数据库插入到相册
+//                ImageUtils.getInstance().saveImage2(MainActivity.this, picUrl,"myTest.jpg");// 通过通知更新到相册，（扫描）
             }
         });
         imgPic = (ImageView) findViewById(R.id.imgPic);

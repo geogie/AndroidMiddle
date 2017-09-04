@@ -1,10 +1,13 @@
 package com.georgeren.savepic2local.utils;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
@@ -27,7 +30,6 @@ import java.util.List;
 
 /**
  * Created by georgeRen on 2017/9/4.
- *
  */
 
 public class ImageUtils {
@@ -158,6 +160,7 @@ public class ImageUtils {
 
 
     /**
+     * 网络图片保存到相册：通知方式实现
      * 保存到：com.georgeren.savepic2local/myPic 文件夹下
      */
     public void saveImage2(Context context, String picUrl, String saveName) {
@@ -180,5 +183,60 @@ public class ImageUtils {
 
     private static final class SettingsUtilInstance {
         private static final ImageUtils instance = new ImageUtils();
+    }
+
+    /**
+     * 网络图片保存到相册：相册数据库插入
+     * @param imageUrl
+     * @param saveName
+     */
+    public void saveImage(String imageUrl, String saveName) {
+        String systemPhotoPath = getSystemPhotoPath();
+        Bitmap memoryCacheBitmap = ImageUtils.getInstance().getBitmapFromMemoryCache(imageUrl);
+        if (memoryCacheBitmap == null || memoryCacheBitmap.isRecycled()) {
+            return;
+        }
+        File file = new File(systemPhotoPath, saveName);
+        ImageUtils.getInstance().saveBitmap(memoryCacheBitmap, file, false);
+        if (file.exists()) {
+            insertSystemPhotos(file);
+        }
+    }
+
+    /**
+     * 插入系统图库图片：必须保证文件存在，不然浪费
+     *
+     * @param newImgFile
+     */
+    public static void insertSystemPhotos(File newImgFile) {
+        ContentResolver contentResolver = InitApp.AppContext.getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.ImageColumns.DATA, newImgFile.getAbsolutePath());
+        values.put(MediaStore.Images.ImageColumns.DATE_ADDED, Long.toString(System.currentTimeMillis()));
+        values.put(MediaStore.Images.ImageColumns.DATE_MODIFIED, Long.toString(System.currentTimeMillis()));
+        values.put(MediaStore.Images.ImageColumns.DATA, newImgFile.getAbsolutePath());
+        values.put(MediaStore.Images.ImageColumns.MIME_TYPE, "image/jpeg");
+        values.put(MediaStore.Images.ImageColumns.SIZE, newImgFile.length());
+        int updateResult = contentResolver.update(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values, MediaStore.Images.ImageColumns.DATA + "=?",
+                new String[]{newImgFile.getAbsolutePath()});
+        if (updateResult > 0) {
+            Log.d(TAG, "更新系统图库图片updateResult=====>" + updateResult);
+        } else {
+            Uri insert = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            Log.d(TAG, "插入系统图库图片insert=====>" + insert);
+        }
+    }
+
+    /**
+     * 系统相册目录
+     *
+     * @return
+     */
+    public static String getSystemPhotoPath() {
+        String systemPhotoPath = null;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            systemPhotoPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "DCIM" + File.separator + "Camera";
+        }
+        return systemPhotoPath;
     }
 }
