@@ -24,3 +24,7 @@
 ## fullwebview: webView 播放html中的视频
 - 点击全屏响应：全屏
 - bug：HUAWEI H60-L01 Android 4.4.2 API 19 没有全屏回调事件。只是其中一个手机，等待解决
+
+## 网络图片保存到相册
+- 通过数据库插入到相册，
+- bug：通过通知更新到相册，（扫描）bug：Meizu Pro5 Android5.1,API22,已经把图片成功放进文件夹中，但是并没有更新到相册中
