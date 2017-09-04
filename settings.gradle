@@ -1,1 +1,1 @@
-include ':app', ':rxbus', ':drawer', ':retrofit', ':fullwebview'
+include ':app', ':rxbus', ':drawer', ':retrofit', ':fullwebview', ':savepic2local'
