@@ -10,13 +10,21 @@
         android:supportsRtl="true"
         android:name=".InitApp"
         android:theme="@style/AppTheme">
+        <!--dagger2 mvp -->
         <activity android:name=".MainActivity">
+
+        </activity>
+        <!--dagger2 scope 理解-->
+        <activity android:name=".scope.ScopeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".scope.TestActivity1"/>
+        <activity android:name=".scope.TestActivity2"/>
+
     </application>
 
 </manifest>
