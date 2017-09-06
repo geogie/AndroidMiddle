@@ -8,7 +8,11 @@
 - injector文件夹：对dagger2的准备，component:执行injector。module：连接M和P的桥梁。
 - DaggerMainComponent：利用injector文件夹（component、module）下的类生成的中间件。
 
-- Scope的理解：入口ScopeActivity
+- Scope的理解：入口ScopeActivity，全局单例，多activity 单例共享（activityA、activityB共享，  
+  activityC独自享用，包含内部多实例共享）。
+
+- Scope 2的理解：入口Scope2Activity，全局单例（app），单activity单例，内部多实例共享。全局单例--》局部单例。
+  实质：component的拥有者是谁？Singleton修饰，scope修饰。app拥有component？activity拥有component？
 
 ## rxBus: rxJava2 实现rxBus 
 - app:dagger2 + MVP

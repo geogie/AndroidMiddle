@@ -27,4 +27,8 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
     // logger
     compile 'com.orhanobut:logger:2.1.1'
+
+    // reactive
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
 }
